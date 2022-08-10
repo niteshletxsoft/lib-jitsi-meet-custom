@@ -27,6 +27,8 @@ export default class JitsiParticipant {
     _role: string;
     _status: string;
     _hidden: boolean;
+    _isSleeping: boolean;
+    _isUsingMobile: boolean;
     _statsID: string;
     _connectionStatus: string;
     _properties: {};
@@ -39,6 +41,14 @@ export default class JitsiParticipant {
      * to.
      */
     getConference(): any;
+    /**
+     * Get the Status student is sleeping
+     */
+    setIsSleeping(value: any): void;
+    /**
+     * get the status about student is using mobile
+     */
+    setUSingMobile(value: any): void;
     /**
      * Gets the value of a property of this participant.
      */

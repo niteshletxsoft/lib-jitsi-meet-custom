@@ -39,6 +39,8 @@ export default class JitsiParticipant {
         this._role = 'none';
         this._status = status;
         this._hidden = hidden;
+        this._isSleeping = false;
+        this._isUsingMobile = false;
         this._statsID = statsID;
         this._connectionStatus = ParticipantConnectionStatus.ACTIVE;
         this._properties = {};
@@ -56,6 +58,39 @@ export default class JitsiParticipant {
      */
     getConference() {
         return this._conference;
+    }
+
+    /**
+     * Get the Status student is sleeping
+     */
+
+    setIsSleeping(value) {
+        this._isSleeping = value;
+
+        // if (value) {
+            console.log('Booom', this._conference);
+            this._conference.sendCommandOnce('UpdateIsSleeping',{
+                attributes: {
+                    id: this._id,
+                    isSleeping: this._isSleeping
+                }
+            });
+
+            // this._conference.sendCommand
+        // }
+    }
+
+    /**
+     * get the status about student is using mobile
+     */
+
+    setUSingMobile(value) {
+        this._isUsingMobile = value;
+
+        this._conference.sendCommandOnce('UpdateIsUsingMobile',{
+            id: this._id,
+            isUsingMobile: this._isUsingMobile
+        });
     }
 
     /**
